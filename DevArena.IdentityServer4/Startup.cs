@@ -34,13 +34,25 @@ namespace DevArena.IdentityServer4
             IdentityServerConfigurationHelper helper = new IdentityServerConfigurationHelper(Configuration);
 
 
-            services
-                .AddIdentityServer()
+            
+            services.AddIdentityServer(options =>
+                {
+                    options.Events.RaiseErrorEvents = true;
+                    options.Events.RaiseInformationEvents = true;
+                    options.Events.RaiseFailureEvents = true;
+                    options.Events.RaiseSuccessEvents = true;
+                })
                 .AddDeveloperSigningCredential()
                 .AddOperationalStore(options =>
+                {
                     options.ConfigureDbContext = builder =>
                         builder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
-                            sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly)))
+                            sql => sql.MigrationsAssembly(migrationsAssembly));
+
+                    // this enables automatic token cleanup. this is optional.
+                    options.EnableTokenCleanup = true;
+                    options.TokenCleanupInterval = 30;
+                })
                 .AddConfigurationStore(options =>
                     options.ConfigureDbContext = builder =>
                         builder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
@@ -76,8 +88,8 @@ namespace DevArena.IdentityServer4
         private void ConfigureDataRepositories(IServiceCollection services)
         {
             // Register DB contexts
-            services.AddDbContext<DbContext>(
-                options => options.UseSqlServer(Configuration.GetConnectionString("AppDB")));
+            //services.AddDbContext<DbContext>(
+            //    options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
     }
 }
