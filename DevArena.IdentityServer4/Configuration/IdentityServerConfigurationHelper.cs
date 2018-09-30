@@ -48,8 +48,8 @@ namespace DevArena.IdentityServer4.Configuration
 
                     if (existingIdentityResource == null)
                         context.IdentityResources.Add(item.ToEntity());
-                    else
-                        Mapper.Map(item, existingIdentityResource);
+                    //else
+                    //    Mapper.Map(item, existingIdentityResource);
                 }
 
             //api resources
@@ -62,8 +62,8 @@ namespace DevArena.IdentityServer4.Configuration
                                                                   .FirstOrDefault(_ => _.Name == item.Name);
                     if (existingApiResource == null)
                         context.ApiResources.Add(item.ToEntity());
-                    else
-                        Mapper.Map(item, existingApiResource);
+                    //else
+                    //    Mapper.Map(item, existingApiResource);
                 }
 
             //clients
@@ -84,8 +84,8 @@ namespace DevArena.IdentityServer4.Configuration
                                                         .FirstOrDefault(c => c.ClientId == item.ClientId);
                     if (existingClient == null)
                         context.Clients.Add(item.ToEntity());
-                    else
-                        Mapper.Map(item, existingClient);
+                    //else
+                    //    Mapper.Map(item, existingClient);
 
 
                 }

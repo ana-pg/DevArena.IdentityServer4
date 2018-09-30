@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using AutoMapper;
 using DevArena.IdentityServer4.Configuration;
+using DevArena.IdentityServer4.Data;
 using DevArena.IdentityServer4.Utilities;
+using IdentityServer4;
+using IdentityServer4.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -27,14 +31,13 @@ namespace DevArena.IdentityServer4
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper();
             services.AddMvc();
 
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
             IdentityServerConfigurationHelper helper = new IdentityServerConfigurationHelper(Configuration);
 
-
-            
             services.AddIdentityServer(options =>
                 {
                     options.Events.RaiseErrorEvents = true;
@@ -57,27 +60,48 @@ namespace DevArena.IdentityServer4
                     options.ConfigureDbContext = builder =>
                         builder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
                             sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly)));
+                
             //in-memory
             //.AddInMemoryClients(helper.Clients)
             //.AddInMemoryApiResources(helper.ApiResources);
 
             //persisted
 
+            //custom dbcontext
+            services.AddDbContext<DevArenaDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddAuthentication().AddGoogle("Google", options =>
+            {
+                options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+
+                options.ClientId = "434483408261-55tc8n0cs4ff1fe21ea8df2o443v2iuc.apps.googleusercontent.com";
+                options.ClientSecret = "3gcoTrEDPPJ0ukn_aYYT6PWo";
+            });
+
             ConfigureDataRepositories(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, DevArenaDbContext ctx)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseIdentityServer();
+            app.UseIdentityServer();// includes a call to UseAuthentication
+
+            app.UseCors(config =>
+                config.AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowAnyOrigin()
+                    .AllowCredentials());
 
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
+
+            //ctx.Database.Migrate();
 
             //app.Run(async (context) =>
             //{

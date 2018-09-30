@@ -7,18 +7,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Claims;
+using DevArena.IdentityServer4.Data;
 
 namespace DevArena.IdentityServer4.Configuration
 {
     public static class Extensions
     {
-        /// <summary>
-        /// 1. Migrates IdentityServer4 database scheme (using built-in migrations from
-        /// IdentityServer4.EntityFramework NuGet package)
-        /// 2. Seed IdentityServer4 configuration for SENG solutions (mapped from appsettings)
-        /// </summary>
-        /// <param name="host"></param>
-        /// <returns></returns>
+        
         public static Microsoft.AspNetCore.Hosting.IWebHost ConfigureIdentityServer(this Microsoft.AspNetCore.Hosting.IWebHost host)
         {
             using (var scope = host.Services.GetRequiredService<IServiceScopeFactory>().CreateScope())
@@ -41,8 +36,25 @@ namespace DevArena.IdentityServer4.Configuration
                 IConfigurationRoot configuration = builder.Build();
                 var data = new IdentityServerConfigurationHelper(configuration);
 
-                //seed data
+                //seed IS4 data (from appsettings to db)
                 data.Seed(configurationContext);
+            }
+
+            return host;
+        }
+
+        public static Microsoft.AspNetCore.Hosting.IWebHost SeedUsers(this Microsoft.AspNetCore.Hosting.IWebHost host)
+        {
+            using (var scope = host.Services.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                //seed users
+                var customDbContext = scope.ServiceProvider.GetService<DevArenaDbContext>();
+                if (customDbContext.Users.FirstOrDefault(_=>_.Username == "admin") == null)
+                    customDbContext.Users.Add(new DevArenaUser() { Username = "admin", Password = "admin", SubjectId = Guid.NewGuid().ToString(), Role = 1 });
+                if (customDbContext.Users.FirstOrDefault(_ => _.Username == "guest") == null)
+                    customDbContext.Users.Add(new DevArenaUser() { Username = "guest", Password = "guest", SubjectId = Guid.NewGuid().ToString(), Role = 2 });
+
+                customDbContext.SaveChanges();
             }
 
             return host;

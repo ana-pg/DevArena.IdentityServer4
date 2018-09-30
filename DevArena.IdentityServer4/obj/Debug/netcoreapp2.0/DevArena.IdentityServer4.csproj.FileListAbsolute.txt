@@ -12,9 +12,9 @@ D:\DevArena2018\DevArena.IdentityServer4\DevArena.IdentityServer4\bin\Debug\netc
 D:\DevArena2018\DevArena.IdentityServer4\DevArena.IdentityServer4\bin\Debug\netcoreapp2.0\DevArena.IdentityServer4.runtimeconfig.json
 D:\DevArena2018\DevArena.IdentityServer4\DevArena.IdentityServer4\bin\Debug\netcoreapp2.0\DevArena.IdentityServer4.runtimeconfig.dev.json
 D:\DevArena2018\DevArena.IdentityServer4\DevArena.IdentityServer4\bin\Debug\netcoreapp2.0\DevArena.IdentityServer4.dll
-D:\DevArena2018\DevArena.IdentityServer4\DevArena.IdentityServer4\bin\Debug\netcoreapp2.0\DevArena.IdentityServer4.pdb
 D:\DevArena2018\DevArena.IdentityServer4\DevArena.IdentityServer4\obj\Debug\netcoreapp2.0\DevArena.IdentityServer4.csproj.CoreCompileInputs.cache
 D:\DevArena2018\DevArena.IdentityServer4\DevArena.IdentityServer4\obj\Debug\netcoreapp2.0\DevArena.IdentityServer4.AssemblyInfoInputs.cache
 D:\DevArena2018\DevArena.IdentityServer4\DevArena.IdentityServer4\obj\Debug\netcoreapp2.0\DevArena.IdentityServer4.AssemblyInfo.cs
+D:\DevArena2018\DevArena.IdentityServer4\DevArena.IdentityServer4\bin\Debug\netcoreapp2.0\DevArena.IdentityServer4.pdb
 D:\DevArena2018\DevArena.IdentityServer4\DevArena.IdentityServer4\obj\Debug\netcoreapp2.0\DevArena.IdentityServer4.dll
 D:\DevArena2018\DevArena.IdentityServer4\DevArena.IdentityServer4\obj\Debug\netcoreapp2.0\DevArena.IdentityServer4.pdb

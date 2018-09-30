@@ -8,7 +8,7 @@ namespace DevArena.IdentityServer4
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).ConfigureIdentityServer().Run();
+            BuildWebHost(args).ConfigureIdentityServer().SeedUsers().Run();
         }
 
         public static IWebHost BuildWebHost(string[] args) => 
