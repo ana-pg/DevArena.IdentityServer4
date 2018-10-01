@@ -30,7 +30,7 @@ namespace DevArena.IdentityServer4
     public class AccountController : Controller
     {
         //private readonly TestUserStore _users;
-        private readonly UserStore _users;
+        private readonly IUserStore _users;
         private readonly IIdentityServerInteractionService _interaction;
         private readonly IClientStore _clientStore;
         private readonly IAuthenticationSchemeProvider _schemeProvider;
@@ -42,7 +42,7 @@ namespace DevArena.IdentityServer4
             IAuthenticationSchemeProvider schemeProvider,
             IEventService events,
             //TestUserStore users = null)
-            UserStore users)
+            IUserStore users)
         {
             // if the TestUserStore is not in DI, then we'll just use the global users collection
             // this is where you would plug in your own custom identity management library (e.g. ASP.NET Identity)

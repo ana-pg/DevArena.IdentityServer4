@@ -31,7 +31,7 @@ namespace DevArena.IdentityServer4
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAutoMapper();
+            
             services.AddMvc();
 
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
@@ -59,7 +59,9 @@ namespace DevArena.IdentityServer4
                 .AddConfigurationStore(options =>
                     options.ConfigureDbContext = builder =>
                         builder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
-                            sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly)));
+                            sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly)))
+                .AddProfileService<ProfileService>()
+                .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>();
                 
             //in-memory
             //.AddInMemoryClients(helper.Clients)
@@ -67,7 +69,7 @@ namespace DevArena.IdentityServer4
 
             //persisted
 
-            //custom dbcontext
+            //custom dbcontext containg dev arena users
             services.AddDbContext<DevArenaDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -78,6 +80,10 @@ namespace DevArena.IdentityServer4
                 options.ClientId = "434483408261-55tc8n0cs4ff1fe21ea8df2o443v2iuc.apps.googleusercontent.com";
                 options.ClientSecret = "3gcoTrEDPPJ0ukn_aYYT6PWo";
             });
+
+            AutoMapper.Mapper.Initialize(cfg => { cfg.AddProfile<MappingProfile>(); });
+
+            
 
             ConfigureDataRepositories(services);
         }
@@ -111,9 +117,7 @@ namespace DevArena.IdentityServer4
 
         private void ConfigureDataRepositories(IServiceCollection services)
         {
-            // Register DB contexts
-            //services.AddDbContext<DbContext>(
-            //    options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<IUserStore, UserStore>();
         }
     }
 }

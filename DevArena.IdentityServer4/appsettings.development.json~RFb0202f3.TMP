@@ -38,8 +38,8 @@
     "Clients": [
       //swagger
       {
-        "ClientId": "apiswagger.clientid",
-        //"ClientSecrets": [ { "Value": "apiswaggersecret" } ],
+        "ClientId": "apiswagger",
+        "ClientSecrets": [ { "Value": "apiswaggersecret" } ],
         "AllowedGrantTypes": [ "implicit" ],
         "AllowedScopes": [ "devarena.api" ],
         "AllowAccessTokensViaBrowser": true,
@@ -54,16 +54,9 @@
         "AllowedGrantTypes": [ "password", "client_credentials", "hybrid" ],
         "AllowedScopes": [ "devarena.api", "devarena.api.client_access", "openid" ],
         "AllowAccessTokensViaBrowser": false
-      },
-      {
-        "ClientId": "js.clientid",
-        "AllowedGrantTypes": [ "implicit" ],
-        "AllowedScopes": [ "devarena.api", "openid", "profile" ],
-        "AllowAccessTokensViaBrowser": true,
-        "RedirectUris": [ "http://localhost:58076/callback.html" ],
-        "PostLogoutRedirectUris": [ "http://localhost:58076/index.html" ],
-        "AllowedCorsOrigins": [ "http://localhost:58076" ] 
       }
+
+      
     ]
   }
 
