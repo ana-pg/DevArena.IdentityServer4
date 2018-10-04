@@ -62,13 +62,13 @@ namespace DevArena.IdentityServer4
                             sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly)))
                 .AddProfileService<ProfileService>()
                 .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>();
+
+                //in-memory
+                //.AddInMemoryIdentityResources(helper.IdentityResources)
+                //.AddInMemoryClients(helper.Clients)
+                //.AddInMemoryApiResources(helper.ApiResources);
+                //.AddTestUsers();
                 
-            //in-memory
-            //.AddInMemoryClients(helper.Clients)
-            //.AddInMemoryApiResources(helper.ApiResources);
-
-            //persisted
-
             //custom dbcontext containg dev arena users
             services.AddDbContext<DevArenaDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -81,9 +81,7 @@ namespace DevArena.IdentityServer4
                 options.ClientSecret = "3gcoTrEDPPJ0ukn_aYYT6PWo";
             });
 
-            AutoMapper.Mapper.Initialize(cfg => { cfg.AddProfile<MappingProfile>(); });
-
-            
+            //AutoMapper.Mapper.Initialize(cfg => { cfg.AddProfile<MappingProfile>(); });
 
             ConfigureDataRepositories(services);
         }
