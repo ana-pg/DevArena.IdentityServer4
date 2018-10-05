@@ -24,6 +24,7 @@ namespace DevArena.IdentityServer4.Data
             {
                 var claims = new List<Claim>();
                 claims.Add(new Claim("role", user.Role.ToString()));
+                
                 context.Result = new GrantValidationResult(subject: user.SubjectId, authenticationMethod: "password",
                     claims: claims);
             }

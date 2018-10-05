@@ -19,3 +19,14 @@ D:\DevArena2018\DevArena.IdentityServer4\DevArena.IdentityServer4\obj\Debug\netc
 D:\DevArena2018\DevArena.IdentityServer4\DevArena.IdentityServer4\obj\Debug\netcoreapp2.0\DevArena.IdentityServer4.AssemblyInfo.cs
 D:\DevArena2018\DevArena.IdentityServer4\DevArena.IdentityServer4\obj\Debug\netcoreapp2.0\DevArena.IdentityServer4.dll
 D:\DevArena2018\DevArena.IdentityServer4\DevArena.IdentityServer4\obj\Debug\netcoreapp2.0\DevArena.IdentityServer4.pdb
+D:\IDENTITYSERVER4 - DEVARENA - WIP\DevArena.GitHub\IdentityServer4\DevArena.IdentityServer4\DevArena.IdentityServer4\bin\Debug\netcoreapp2.0\DevArena.IdentityServer4.deps.json
+D:\IDENTITYSERVER4 - DEVARENA - WIP\DevArena.GitHub\IdentityServer4\DevArena.IdentityServer4\DevArena.IdentityServer4\bin\Debug\netcoreapp2.0\DevArena.IdentityServer4.runtimeconfig.json
+D:\IDENTITYSERVER4 - DEVARENA - WIP\DevArena.GitHub\IdentityServer4\DevArena.IdentityServer4\DevArena.IdentityServer4\bin\Debug\netcoreapp2.0\DevArena.IdentityServer4.runtimeconfig.dev.json
+D:\IDENTITYSERVER4 - DEVARENA - WIP\DevArena.GitHub\IdentityServer4\DevArena.IdentityServer4\DevArena.IdentityServer4\bin\Debug\netcoreapp2.0\DevArena.IdentityServer4.dll
+D:\IDENTITYSERVER4 - DEVARENA - WIP\DevArena.GitHub\IdentityServer4\DevArena.IdentityServer4\DevArena.IdentityServer4\bin\Debug\netcoreapp2.0\DevArena.IdentityServer4.pdb
+D:\IDENTITYSERVER4 - DEVARENA - WIP\DevArena.GitHub\IdentityServer4\DevArena.IdentityServer4\DevArena.IdentityServer4\obj\Debug\netcoreapp2.0\DevArena.IdentityServer4.csprojAssemblyReference.cache
+D:\IDENTITYSERVER4 - DEVARENA - WIP\DevArena.GitHub\IdentityServer4\DevArena.IdentityServer4\DevArena.IdentityServer4\obj\Debug\netcoreapp2.0\DevArena.IdentityServer4.csproj.CoreCompileInputs.cache
+D:\IDENTITYSERVER4 - DEVARENA - WIP\DevArena.GitHub\IdentityServer4\DevArena.IdentityServer4\DevArena.IdentityServer4\obj\Debug\netcoreapp2.0\DevArena.IdentityServer4.AssemblyInfoInputs.cache
+D:\IDENTITYSERVER4 - DEVARENA - WIP\DevArena.GitHub\IdentityServer4\DevArena.IdentityServer4\DevArena.IdentityServer4\obj\Debug\netcoreapp2.0\DevArena.IdentityServer4.AssemblyInfo.cs
+D:\IDENTITYSERVER4 - DEVARENA - WIP\DevArena.GitHub\IdentityServer4\DevArena.IdentityServer4\DevArena.IdentityServer4\obj\Debug\netcoreapp2.0\DevArena.IdentityServer4.dll
+D:\IDENTITYSERVER4 - DEVARENA - WIP\DevArena.GitHub\IdentityServer4\DevArena.IdentityServer4\DevArena.IdentityServer4\obj\Debug\netcoreapp2.0\DevArena.IdentityServer4.pdb

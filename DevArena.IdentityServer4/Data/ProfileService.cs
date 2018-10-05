@@ -22,13 +22,17 @@ namespace DevArena.IdentityServer4.Data
         {
             var subjectId = context.Subject.GetSubjectId();
             var user = await _users.FindBySubjectId(subjectId);
+
+            //todo see requested scopes
+            //reorganize scopes based on users role
+            var scopes = context.Subject.Claims.FirstOrDefault(_ => _.Type == "scope");
             
             if (user != null)
             {
                 context.IssuedClaims.Add(new Claim("role", user.Role.ToString()));
             }
-            if (context.Client.AllowedGrantTypes.Contains("password"))
-                context.IssuedClaims.Add(new Claim("role", "3"));
+            //else if (context.Client.AllowedGrantTypes.Contains("password"))
+            //    context.IssuedClaims.Add(new Claim("role", "3"));
 
         }
 
