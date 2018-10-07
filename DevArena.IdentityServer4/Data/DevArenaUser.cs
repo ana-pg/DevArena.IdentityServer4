@@ -12,8 +12,11 @@ namespace DevArena.IdentityServer4.Data
         public string Username { get; set; }
         public string Password { get; set; }
         public long Role { get; set; }
+        public string Email { get; set; }
+        public string Mobile { get; set; }
         public string SubjectId { get; set; }
         public string Provider { get; set; }
         public string ProviderSubjectId { get; set; }
+        
     }
 }
