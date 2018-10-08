@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using IdentityServer4.EntityFramework.Interfaces;
 using IdentityServer4.EntityFramework.Mappers;
-using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
 namespace DevArena.IdentityServer4.Configuration
@@ -48,8 +47,6 @@ namespace DevArena.IdentityServer4.Configuration
 
                     if (existingIdentityResource == null)
                         context.IdentityResources.Add(item.ToEntity());
-                    //else
-                    //    Mapper.Map(item, existingIdentityResource);
                 }
 
             //api resources
@@ -62,8 +59,6 @@ namespace DevArena.IdentityServer4.Configuration
                                                                   .FirstOrDefault(_ => _.Name == item.Name);
                     if (existingApiResource == null)
                         context.ApiResources.Add(item.ToEntity());
-                    //else
-                    //    Mapper.Map(item, existingApiResource);
                 }
 
             //clients
@@ -84,8 +79,6 @@ namespace DevArena.IdentityServer4.Configuration
                                                         .FirstOrDefault(c => c.ClientId == item.ClientId);
                     if (existingClient == null)
                         context.Clients.Add(item.ToEntity());
-                    //else
-                    //    Mapper.Map(item, existingClient);
 
 
                 }
