@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using IdentityServer4.EntityFramework.Interfaces;
 using IdentityServer4.EntityFramework.Mappers;
-using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
 namespace DevArena.IdentityServer4.Configuration
