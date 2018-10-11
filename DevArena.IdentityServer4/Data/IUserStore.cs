@@ -16,7 +16,7 @@ namespace DevArena.IdentityServer4.Data
 
         Task<DevArenaUser> FindByExternalProvider(string provider, string subjectId);
 
-        //Task<DevArenaUser> AutoProvisionUser(string provider, string subjectId, List<Claim> claims);
+        Task<DevArenaUser> AutoProvisionUser(string provider, string subjectId, List<Claim> claims);
 
         Task<bool> SaveAppUser(DevArenaUser user);
     }

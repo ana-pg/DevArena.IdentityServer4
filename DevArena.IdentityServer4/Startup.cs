@@ -69,8 +69,10 @@ namespace DevArena.IdentityServer4
             {
                 options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
 
-                options.ClientId = "434483408261-55tc8n0cs4ff1fe21ea8df2o443v2iuc.apps.googleusercontent.com";
-                options.ClientSecret = "3gcoTrEDPPJ0ukn_aYYT6PWo";
+                //options.ClientId = "434483408261-55tc8n0cs4ff1fe21ea8df2o443v2iuc.apps.googleusercontent.com";
+                //options.ClientSecret = "3gcoTrEDPPJ0ukn_aYYT6PWo";
+                options.ClientId = "937241204261-r4koj31ol86gehusjco1lel9jmbamkt2.apps.googleusercontent.com";
+                options.ClientSecret = "GyHFkUMIel_V_RiQdxmBB1mi";
             });
 
             ConfigureDataRepositories(services);

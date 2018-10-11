@@ -37,9 +37,23 @@ namespace DevArena.IdentityServer4.Data
             return await _dbContext.Users.FirstOrDefaultAsync(_ => _.ProviderSubjectId == subjectId && _.Provider == provider);
         }
 
-        //public Task<DevArenaUser> AutoProvisionUser(string provider, string subjectId, List<Claim> claims)
-        //{
-        //}
+        public async Task<DevArenaUser> AutoProvisionUser(string provider, string subjectId, List<Claim> claims)
+        {
+            DevArenaUser user = new DevArenaUser()
+            {
+                SubjectId = Guid.NewGuid().ToString(),
+                ProviderSubjectId = subjectId,
+                Password = "",
+                Provider = provider,
+                Role = 3,
+                Username = claims.FirstOrDefault(_=>_.Type == "name")?.Value
+            };
+
+            _dbContext.Users.Add(user);
+            await _dbContext.SaveChangesAsync();
+
+            return user;
+        }
 
         public Task<bool> SaveAppUser(DevArenaUser user)
         {
